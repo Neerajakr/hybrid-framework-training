@@ -21,17 +21,19 @@ public class AddEmployeeTest extends AutomationWrapper{
 	    driver.findElement(By.xpath("//span[text()='PIM']")).click();
 	    driver.findElement(By.linkText("Add Employee")).click();
 //	    driver.findElement(By.xpath("(//button[@type='button'])[3]")).click();
-	    
-	    driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Users\\Administrator\\Desktop\\SamplePDF.pdf");
+//	 upload from local   
+//	    driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Users\\Administrator\\Desktop\\SamplePDF.pdf");
+//	upload from Project   
+	    File file = new File("src/test/resources/files/SamplePDF.pdf");
+	    String path=file.getAbsolutePath(); 
+	    driver.findElement(By.xpath("//input[@type='file']")).sendKeys(path);
 	    String error =driver.findElement(By.xpath("//span[text()='File type not allowed']")).getText();
 	    System.out.println("Login: "+error);
 	    Assert.assertEquals(error,"File type not allowed");
 	    Assert.assertTrue(error.contains("File type not allowed"));
 	    
 	    
-	    
-//	    File uploadFile = new File("src/test/resources/SamplePDF.pdf");
-//
+	  
 //	    WebElement fileInput = driver.findElement(By.xpath("(//button[@type='button'])[3]"));
 //	    
 //	    fileInput.sendKeys(uploadFile.getAbsolutePath());
