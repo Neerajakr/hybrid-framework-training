@@ -9,16 +9,29 @@ import com.allianz.utils.DataUtils;
 
 public class LoginTest extends AutomationWrapper{
 	
-	@Test
-	public void validLoginTest() {
+//	@Test
+//	public void validLoginTest() {
+//		
+//		System.out.println("Login test ");
+//		driver.findElement(By.name("username")).sendKeys("Admin");
+//		driver.findElement(By.name("password")).sendKeys("admin123");
+//		driver.findElement(By.xpath("//button[@type='submit']")).click();
+//	    boolean loginstatus =driver.findElement(By.xpath("//h6[text()='Dashboard']")).isDisplayed();
+//	    System.out.println("Login: "+loginstatus);
+//	    Assert.assertEquals(loginstatus,true);
+//	}
+	
+	
+	@Test(dataProvider="commonDataProvider",dataProviderClass=DataUtils.class)
+	public void validLoginTest(String username, String password, String header) {
 		
 		System.out.println("Login test ");
-		driver.findElement(By.name("username")).sendKeys("Admin");
-		driver.findElement(By.name("password")).sendKeys("admin123");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    boolean loginstatus =driver.findElement(By.xpath("//h6[text()='Dashboard']")).isDisplayed();
-	    System.out.println("Login: "+loginstatus);
-	    Assert.assertEquals(loginstatus,true);
+		driver.findElement(By.name("username")).sendKeys(username);
+		driver.findElement(By.name("password")).sendKeys(password);
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+
+		String actualHeader = driver.findElement(By.xpath("//h6[contains(normalize-space(),'Dash')]")).getText();
+		Assert.assertEquals(actualHeader,header);
 	}
 	
 //	@Test
@@ -35,7 +48,8 @@ public class LoginTest extends AutomationWrapper{
 	
 
 	
-	@Test(dataProvider="invalidLoginData",dataProviderClass=DataUtils.class)
+	//@Test(dataProvider="invalidLoginData",dataProviderClass=DataUtils.class)
+	@Test(dataProvider="commonDataProvider",dataProviderClass=DataUtils.class)
 	public void invalidLoginTest(String username, String password, String error) {
 		
 		System.out.println("Login test ");
