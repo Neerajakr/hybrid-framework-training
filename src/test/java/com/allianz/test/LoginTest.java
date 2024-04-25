@@ -1,10 +1,10 @@
 package com.allianz.test;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.allianz.base.AutomationWrapper;
+import com.allianz.pages.DashboardPage;
 import com.allianz.pages.LoginPage;
 import com.allianz.utils.DataUtils;
 
@@ -31,13 +31,17 @@ public class LoginTest extends AutomationWrapper{
 //		driver.findElement(By.name("password")).sendKeys(password);
 //		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
 		
-		LoginPage.enterUsername(driver, username);
-		LoginPage.enterPassword(driver, password);
-		LoginPage.clickOnLogin(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterUsername(username);
+		loginPage.enterPassword(password);
+		loginPage.clickOnLogin();
 
 //		String actualHeader = driver.findElement(By.xpath("//h6[contains(normalize-space(),'Dash')]")).getText();
-		String actualHeader =LoginPage.verifyDashboard(driver);
+		DashboardPage dashboardPage = new DashboardPage(driver);
+		String actualHeader =dashboardPage.verifyDashboard();
 		Assert.assertEquals(actualHeader,header);
+		
+//		dashboardPage.clickOnAssignLeave();
 	}
 	
 //	@Test
@@ -63,12 +67,14 @@ public class LoginTest extends AutomationWrapper{
 //		driver.findElement(By.name("password")).sendKeys(password);
 //		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		
-		LoginPage.enterUsername(driver, username);
-		LoginPage.enterPassword(driver, password);
-		LoginPage.clickOnLogin(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		//		LoginPage.enterUsername(driver, username);
+		loginPage.enterUsername(username);
+		loginPage.enterPassword(password);
+		loginPage.clickOnLogin();
 		
 //	    String actualerror =driver.findElement(By.xpath("//p[text()='Invalid credentials']")).getText();
-	    String actualerror =LoginPage.verifyLoginError(driver);
+	    String actualerror =loginPage.verifyLoginError();
 	    
 	    System.out.println("Login: "+actualerror);
 	    Assert.assertEquals(actualerror,error);
