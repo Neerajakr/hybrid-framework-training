@@ -1,5 +1,7 @@
 package com.allianz.base;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -34,6 +36,20 @@ public class WebDriverKeywords {
 	public String getAttributeValue(By locator,String attributeName) {
 		return driver.findElement(locator).getAttribute(attributeName);
 		
+	}
+	
+	public void switchByTitle(String title) {
+		
+		ArrayList<String> windows=new ArrayList<String>(driver.getWindowHandles());
+		
+		for(String win : windows)
+		{
+			driver.switchTo().window(win);
+			if(driver.getTitle().equals("phpMyAdmin"))
+			{
+				break;
+			}
+		}
 	}
 
 }

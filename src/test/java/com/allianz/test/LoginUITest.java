@@ -10,7 +10,8 @@ import com.allianz.base.AutomationWrapper;
 
 public class LoginUITest extends AutomationWrapper {
 	
-	@Test(priority=1)
+	//@Test(priority=1)
+	@Test(groups= {"ui"})
 	public void titleTest(){
 		   System.out.println("Title test ");	   
 		   String actualTitle =driver.getTitle();
@@ -18,7 +19,8 @@ public class LoginUITest extends AutomationWrapper {
 		   Assert.assertEquals(actualTitle, "OrangeHRM");
 	}
 	
-	@Test
+	//@Test
+	@Test(groups= {"ui","smoke"})
 	public void applicationTest(){
 //		System.out.println("Title test ");
 //		WebDriver driver =new ChromeDriver();

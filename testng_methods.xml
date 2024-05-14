@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Orange HRM Suite">
+	<parameter name="browser" value="edge"></parameter>
+
+   <test thread-count="5" name="UI Test-Edge">
+    <classes>
+      <class name="com.allianz.test.LoginUITest">
+      	<methods>
+		  <include name="titleTest"></include>
+	  		</methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+    <test thread-count="5" name="UI Test-Chrome">
+		<parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="com.allianz.test.LoginUITest">
+		<methods>
+		  <exclude name="titleTest"></exclude>
+	  		</methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+</suite> <!-- Suite -->
+ 
