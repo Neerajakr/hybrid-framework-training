@@ -1,5 +1,6 @@
 package com.allianz.base;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -48,8 +49,9 @@ public class AutomationWrapper {
 	
 	@BeforeMethod(alwaysRun=true)
 	@Parameters({"browser"})
-	public void setUp(@Optional("ch")String browserName){
+	public void setUp(@Optional("ch")String browserName,Method mtd){
 		
+		test=extent.createTest(mtd.getName());
 		
 		if(browserName.equalsIgnoreCase("edge")) {
 			driver =new EdgeDriver();

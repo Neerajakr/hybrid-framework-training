@@ -1,0 +1,14 @@
+com\allianz\test\AddEmployeeTest.class
+com\allianz\utils\DataUtils.class
+com\allianz\test\ZDemoExcel.class
+com\allianz\test\LoginTest.class
+com\allianz\base\AutomationWrapper.class
+com\allianz\test\LoginUITest.class
+com\allianz\pages\MainPage.class
+com\allianz\test\ZDemoTest.class
+com\allianz\pages\LoginPage.class
+com\allianz\utils\ExcelUtils.class
+com\allianz\test\ZDemo3Extent.class
+com\allianz\base\WebDriverKeywords.class
+com\allianz\pages\DashboardPage.class
+com\allianz\pages\PIMPage.class
