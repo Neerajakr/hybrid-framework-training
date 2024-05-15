@@ -16,7 +16,7 @@ public class AddEmployeeTest extends AutomationWrapper{
 	@Test
 	public void uploadInvalidDisplayPictureTest() {
 		
-		System.out.println("Picture test ");
+		System.out.println("Picture test");
 		driver.findElement(By.name("username")).sendKeys("Admin");
 		driver.findElement(By.name("password")).sendKeys("admin123");
 		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
